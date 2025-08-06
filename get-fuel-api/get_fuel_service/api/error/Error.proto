@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package get_fuel_service.api.error;
+
+message Error {
+  string code = 1;
+  string message = 2;
+  Error.Level level = 3;
+  map<string, string> errorDate = 5;
+
+  enum Level {
+    CRITICAL = 0;
+    LOGICAL = 1;
+    INGO = 2;
+  }
+}

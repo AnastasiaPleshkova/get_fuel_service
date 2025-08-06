@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package get_fuel_service.api.request;
+
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
+
+message GetFuelRequest {
+  int64 carId = 1 [(validate.rules).int64 = {gte:1}];
+  google.protobuf.Timestamp startTime = 2;
+  google.protobuf.Timestamp endTime = 3;
+}
+
+message CreateFuelRequest {
+  int64 carId = 1 [(validate.rules).int64 = {gte:1}];
+  float litres = 2 [(validate.rules).float = {gte:0.001}];
+  google.protobuf.Timestamp createdTime = 3;
+  string consumptionByCar = 4;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package get_fuel_service.api.response;
+
+import "api/error/Error.proto";
+
+message CreateCarResponse {
+  repeated error.Error errors = 1;
+  string internalId = 2;
+
+}
