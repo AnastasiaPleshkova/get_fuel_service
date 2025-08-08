@@ -38,7 +38,8 @@
             <column name="car_id" type="BIGINT">
                 <constraints referencedTableName="car"
                              referencedColumnNames="id"
-                             nullable="false"/>
+                             nullable="false"
+                             foreignKeyName="fk_car_id_fuel_record"/>
             </column>
             <column name="fuel_litres" type="VARCHAR" defaultValue="0">
                 <constraints nullable="false"/>
