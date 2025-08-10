@@ -19,6 +19,7 @@ target/
 *.iml
 *.ipr
 .gigaide
+.gitattributes
 
 ### NetBeans ###
 /nbproject/private/
