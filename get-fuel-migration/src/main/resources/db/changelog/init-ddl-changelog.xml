@@ -6,8 +6,8 @@
             http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd"
         objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
 
-    <changeSet id="1_create_table_car" author="pleshkova">
-        <createTable tableName="car">
+    <changeSet id="1_create_table_vehicle" author="pleshkova">
+        <createTable tableName="vehicle">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
@@ -30,16 +30,16 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="2_create_table_fuel_record" author="pleshkova">
+    <changeSet id="2_create_table_fuel_records" author="pleshkova">
         <createTable tableName="fuel_record">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="car_id" type="BIGINT">
-                <constraints referencedTableName="car"
+            <column name="vehicle_id" type="BIGINT">
+                <constraints referencedTableName="vehicle"
                              referencedColumnNames="id"
                              nullable="false"
-                             foreignKeyName="fk_car_id_fuel_record"/>
+                             foreignKeyName="fk_vehicle_id_fuel_record"/>
             </column>
             <column name="fuel_litres" type="VARCHAR" defaultValue="0">
                 <constraints nullable="false"/>
@@ -51,7 +51,7 @@
             <column name="mileage" type="VARCHAR" defaultValue="0">
                 <constraints nullable="false"/>
             </column>
-            <column name="fuel_consumption_by_car" type="VARCHAR"/>
+            <column name="fuel_consumption_by_vehicle" type="VARCHAR"/>
             <column name="internal_id" type="UUID" remarks="Уникальный внутренний ID"
                     defaultValueComputed="gen_random_uuid()">
                 <constraints nullable="false" unique="true"/>
