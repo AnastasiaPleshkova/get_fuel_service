@@ -14,3 +14,8 @@ spring:
     enabled: true
     drop-first: false
     change-log: classpath:db/master.xml
+
+job:
+  some-job:
+    enabled: ${SOME_JOB_ENABLED:false}
+    cron: ${SOME_JOB_CRON}
