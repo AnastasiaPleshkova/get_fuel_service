@@ -27,14 +27,22 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>ru.pleshkova</groupId>
             <artifactId>get-fuel-api</artifactId>
             <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>net.devh</groupId>
+            <artifactId>grpc-spring-boot-starter</artifactId>
+            <version>${grpc-spring-boot-starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-all</artifactId>
+            <version>${grpc.version}</version>
         </dependency>
 
 

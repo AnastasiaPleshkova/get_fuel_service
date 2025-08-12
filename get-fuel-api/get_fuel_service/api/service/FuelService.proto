@@ -2,14 +2,15 @@ syntax = "proto3";
 
 package get_fuel_service.api.service;
 
-import "api/request/CarRequest.proto";
+import "api/request/VehicleRequest.proto";
 import "api/request/FuelRequest.proto";
 import "api/response/FuelResponse.proto";
-import "api/response/CarResponse.proto";
+import "api/response/VehicleResponse.proto";
 
 service FuelService {
 
-  rpc createCar(request.CreateCarRequest) returns (response.CreateCarResponse);
+  rpc createVehicle(request.CreateVehicleRequest) returns (response.CreateVehicleResponse);
+  rpc getVehicle(request.GetVehicleRequest) returns (response.GetVehicleResponse);
 
   rpc createFuel(request.CreateFuelRequest) returns (response.CreateFuelResponse);
   rpc getFuel(request.GetFuelRequest) returns (response.GetFuelResponse);

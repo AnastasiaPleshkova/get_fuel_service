@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.pleshkova.business.model.dto.RestResponse;
-import ru.pleshkova.business.service.SomeVeryImportantService;
+import ru.pleshkova.business.service.FuelService;
 
 @RestController
 @RequiredArgsConstructor
 public class GetFuelRestController {
 
-    private final SomeVeryImportantService service;
+    private final FuelService service;
 
     @GetMapping("/api/reference/search")
     public ResponseEntity<RestResponse> getData(@RequestParam(required = false) String attribute) {

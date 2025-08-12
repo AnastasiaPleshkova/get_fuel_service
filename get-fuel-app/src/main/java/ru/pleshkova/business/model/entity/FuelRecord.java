@@ -32,6 +32,6 @@ public class FuelRecord extends BaseEntity {
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "vehicle_id")
-    private FuelRecord vehicle;
+    private Vehicle vehicle;
 
 }
