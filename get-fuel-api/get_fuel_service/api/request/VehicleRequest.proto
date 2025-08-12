@@ -4,7 +4,11 @@ package get_fuel_service.api.request;
 
 import "validate/validate.proto";
 
-message CreateCarRequest {
+message CreateVehicleRequest {
   string vin = 1 [(validate.rules).string.min_len = 1];
   string systemId = 2;
+}
+
+message GetVehicleRequest {
+  string vin = 1 [(validate.rules).string.min_len = 1];
 }

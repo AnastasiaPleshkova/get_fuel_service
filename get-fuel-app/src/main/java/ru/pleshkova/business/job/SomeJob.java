@@ -19,7 +19,7 @@ public class SomeJob {
 
     private static final String JOB_NAME = "'someJob'";
 
-    @Scheduled(cron = "#{@jobProperties.someJob.cron")
+    @Scheduled(cron = "#{@jobProperties.someJob.cron}")
     @SchedulerLock(name = "someJob")
     public void someJob() {
         log.info("{}: start job at {}", JOB_NAME, LocalDateTime.now());
