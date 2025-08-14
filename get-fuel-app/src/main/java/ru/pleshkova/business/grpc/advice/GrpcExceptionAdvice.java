@@ -53,7 +53,7 @@ public class GrpcExceptionAdvice {
                         .build()))
                 .build();
 
-        log.error(exception.getMessage(), exception);
+        log.warn(exception.getMessage(), exception);
         return StatusProto.toStatusRuntimeException(status);
     }
 }
