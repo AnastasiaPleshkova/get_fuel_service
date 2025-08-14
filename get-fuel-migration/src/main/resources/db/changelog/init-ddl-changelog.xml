@@ -70,4 +70,10 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="3_create_index_internal_id_vehicle" author="pleshkova">
+        <createIndex indexName="idx_vehicle_vin" tableName="vehicle" unique="false">
+            <column name="vin"/>
+        </createIndex>
+    </changeSet>
+
 </databaseChangeLog>

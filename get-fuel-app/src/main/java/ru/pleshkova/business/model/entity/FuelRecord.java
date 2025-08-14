@@ -28,6 +28,10 @@ public class FuelRecord extends BaseEntity {
     private String fuelConsumptionByVehicle;
 
     private UUID internalId;
+    @PrePersist
+    public void prePersist() {
+        this.internalId = UUID.randomUUID();
+    }
 
     @JsonIgnore
     @ManyToOne

@@ -11,6 +11,10 @@ message CreateVehicleResponse {
 
 message GetVehicleResponse {
   repeated error.Error errors = 1;
-  string internalId = 2;
-  string vin = 3;
+  repeated GetVehicle vehicles = 2;
+}
+
+message GetVehicle {
+  string internalId = 1;
+  string vin = 2;
 }

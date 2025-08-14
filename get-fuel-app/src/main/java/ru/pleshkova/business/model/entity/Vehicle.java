@@ -20,6 +20,10 @@ public class Vehicle extends BaseEntity {
     private String vin;
 
     private UUID internalId;
+    @PrePersist
+    public void prePersist() {
+        this.internalId = UUID.randomUUID();
+    }
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "vehicle", cascade = CascadeType.ALL, orphanRemoval = true)

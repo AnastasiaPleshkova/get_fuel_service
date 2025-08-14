@@ -10,5 +10,8 @@ message CreateVehicleRequest {
 }
 
 message GetVehicleRequest {
-  string vin = 1 [(validate.rules).string.min_len = 1];
+  oneof vehicle_identifier {
+    string vin = 1 [(validate.rules).string.min_len = 1];
+    string internalId = 2 [(validate.rules).string.uuid = true];
+  }
 }

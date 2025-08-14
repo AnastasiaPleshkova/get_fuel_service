@@ -7,11 +7,11 @@ import "google/protobuf/timestamp.proto";
 
 message GetFuelResponse {
   repeated error.Error errors = 1;
-  int64 carId = 2;
-  repeated FuelRecord fuelRecords = 3;
+  string vehicleInternalId = 2;
+  repeated GetFuelRecord fuelRecords = 3;
 }
 
-message FuelRecord {
+message GetFuelRecord {
   string mileage = 1;
   string litres = 2;
   google.protobuf.Timestamp createdTime = 3;
@@ -21,4 +21,5 @@ message FuelRecord {
 
 message CreateFuelResponse {
   repeated error.Error errors = 1;
+  string internalId = 2;
 }

@@ -37,12 +37,12 @@
         </dependency>
 
         <dependency>
-            <groupId>io.envoyproxy.protoc-gen-validate</groupId>
+            <groupId>build.buf.protoc-gen-validate</groupId>
             <artifactId>pgv-java-stub</artifactId>
             <version>${grpc.validation.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.envoyproxy.protoc-gen-validate</groupId>
+            <groupId>build.buf.protoc-gen-validate</groupId>
             <artifactId>pgv-java-grpc</artifactId>
             <version>${grpc.validation.version}</version>
         </dependency>
@@ -109,7 +109,7 @@
                             <pluginParameter>lang=java</pluginParameter>
                             <pluginId>grpc-validation-generation</pluginId>
                             <pluginArtifact>
-                                io.envoyproxy.protoc-gen-validate:protoc-gen-validate:${grpc.validation.version}:exe:${os.detected.classifier}
+                                build.buf.protoc-gen-validate:protoc-gen-validate:${grpc.validation.version}:exe:${os.detected.classifier}
                             </pluginArtifact>
                         </configuration>
                     </execution>

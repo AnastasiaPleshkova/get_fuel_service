@@ -3,10 +3,11 @@ package ru.pleshkova.business.model.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import ru.pleshkova.business.model.entity.FuelRecord;
 
-import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 public interface FuelRecordRepository extends JpaRepository<FuelRecord, Long> {
 
-    List<FuelRecord> findByVehicleId(Long vehicleId);
+    Optional<FuelRecord> findByInternalId(UUID internalId);
 
 }
