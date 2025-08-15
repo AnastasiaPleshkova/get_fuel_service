@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -26,12 +25,6 @@ public class FuelRecord extends BaseEntity {
     private String mileage;
 
     private String fuelConsumptionByVehicle;
-
-    private UUID internalId;
-    @PrePersist
-    public void prePersist() {
-        this.internalId = UUID.randomUUID();
-    }
 
     @JsonIgnore
     @ManyToOne

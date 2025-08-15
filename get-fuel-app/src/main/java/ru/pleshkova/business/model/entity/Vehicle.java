@@ -6,7 +6,6 @@ import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -18,12 +17,6 @@ import java.util.UUID;
 public class Vehicle extends BaseEntity {
 
     private String vin;
-
-    private UUID internalId;
-    @PrePersist
-    public void prePersist() {
-        this.internalId = UUID.randomUUID();
-    }
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "vehicle", cascade = CascadeType.ALL, orphanRemoval = true)

@@ -10,6 +10,7 @@ message CreateFuelRequest {
   float litres = 2 [(validate.rules).float = {gte:0.001}];
   google.protobuf.Timestamp createdTime = 3;
   string consumptionByCar = 4;
+  float mileage = 5 [(validate.rules).float = {gte:0.001}];
 }
 
 message GetFuelRequest {

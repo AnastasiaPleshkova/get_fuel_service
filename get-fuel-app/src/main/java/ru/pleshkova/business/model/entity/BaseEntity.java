@@ -7,10 +7,12 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -31,6 +33,10 @@ public abstract class BaseEntity implements Serializable {
     @Version
     @Column(name = "vstamp")
     private long version;
+
+    @Column(name = "internal_id")
+    @UuidGenerator
+    private UUID internalId;
 
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @EqualsAndHashCode.Exclude

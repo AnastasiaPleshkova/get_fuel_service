@@ -5,13 +5,13 @@ package get_fuel_service.api.response;
 import "api/error/Error.proto";
 
 message CreateVehicleResponse {
-  repeated error.Error errors = 1;
-  string internalId = 2;
+  string internalId = 1;
+  repeated error.Error errors = 2;
 }
 
 message GetVehicleResponse {
-  repeated error.Error errors = 1;
-  repeated GetVehicle vehicles = 2;
+  repeated GetVehicle vehicles = 1;
+  repeated error.Error errors = 2;
 }
 
 message GetVehicle {

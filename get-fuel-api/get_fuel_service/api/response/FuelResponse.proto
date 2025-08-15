@@ -6,20 +6,21 @@ import "api/error/Error.proto";
 import "google/protobuf/timestamp.proto";
 
 message GetFuelResponse {
-  repeated error.Error errors = 1;
-  string vehicleInternalId = 2;
-  repeated GetFuelRecord fuelRecords = 3;
+  repeated GetFuelRecord fuelRecords = 1;
+  repeated error.Error errors = 2;
 }
 
 message GetFuelRecord {
-  string mileage = 1;
-  string litres = 2;
-  google.protobuf.Timestamp createdTime = 3;
-  string consumptionByCar = 4;
-  string consumptionCalculated = 5;
+  string vehicleInternalId = 1;
+  string fuelInternalId = 2;
+  string mileage = 3;
+  string litres = 4;
+  google.protobuf.Timestamp createdTime = 5;
+  string consumptionByCar = 6;
+  string consumptionCalculated = 7;
 }
 
 message CreateFuelResponse {
-  repeated error.Error errors = 1;
-  string internalId = 2;
+  string internalId = 1;
+  repeated error.Error errors = 2;
 }

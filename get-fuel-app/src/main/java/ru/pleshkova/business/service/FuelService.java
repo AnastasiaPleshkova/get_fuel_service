@@ -4,6 +4,7 @@ import get_fuel_service.api.request.FuelRequest;
 import get_fuel_service.api.response.FuelResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.pleshkova.business.errors.EntityNotFoundException;
 import ru.pleshkova.business.mapper.FuelRecordMapper;
 import ru.pleshkova.business.model.dto.RestResponse;
@@ -41,22 +42,14 @@ public class FuelService {
                 .build();
     }
 
-//    @Transactional(readOnly = true)
+    @Transactional(readOnly = true)
     public FuelResponse.GetFuelResponse getFuel(FuelRequest.GetFuelRequest request) {
+        final var response = FuelResponse.GetFuelResponse.newBuilder();
         List<FuelRecord> fuels = new ArrayList<>();
         switch (request.getFuelIdentifierCase()) {
-            case VEHICLEINTERNALID ->
-                    fuels.addAll(vehicleRepository.findByInternalId(UUID.fromString(request.getFuelInternalId()))
-                            .map(Vehicle::getFuelRecords)
-                            .orElseThrow(() -> new EntityNotFoundException(Vehicle.class, request.getVehicleInternalId())));
+            case VEHICLEINTERNALID -> fuels.addAll(fuelRecordRepository.findByVehicleInternalId(UUID.fromString(request.getVehicleInternalId())));
             case FUELINTERNALID -> fuelRecordRepository.findByInternalId(UUID.fromString(request.getFuelInternalId()))
-                    .ifPresent(fuels::add);
-        }
-
-        final var response = FuelResponse.GetFuelResponse.newBuilder();
-        if (!fuels.isEmpty()) {
-            Vehicle vehicle = fuels.get(0).getVehicle();
-            response.setVehicleInternalId(String.valueOf(vehicle.getInternalId()));
+                        .ifPresent(fuels::add);
         }
         fuels.forEach(fuel -> response.addFuelRecords(fuelRecordMapper.mapToGetFuelRecord(fuel)));
         return response.build();

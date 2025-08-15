@@ -14,7 +14,7 @@ public class RestExceptionHandler {
     @ExceptionHandler
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public RestResponse handleException(final Exception exception) {
-//        log.error(exception.getMessage());
+        log.error(exception.getMessage());
         return new RestResponse("Internal error");
     }
 }
