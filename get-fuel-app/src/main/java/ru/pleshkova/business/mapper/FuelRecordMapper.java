@@ -16,23 +16,28 @@ public class FuelRecordMapper {
 
     public FuelRecord mapToFuelEntity(FuelRequest.CreateFuelRequest request) {
         FuelRecord fuel = new FuelRecord();
+
         fuel.setFuelLitres(String.valueOf(request.getLitres()));
+        fuel.setMileage(String.valueOf(request.getMileage()));
+
         if (!StringUtils.isEmpty(request.getConsumptionByCar())) {
             fuel.setFuelConsumptionByVehicle(request.getConsumptionByCar());
         }
+
         LocalDateTime time = localDateTime(request.getCreatedTime());
-        fuel.setCreatedDate(time);
+        fuel.setRecordDate(time);
+
 
         return fuel;
     }
 
     public FuelResponse.GetFuelRecord mapToGetFuelRecord(FuelRecord entity) {
         return FuelResponse.GetFuelRecord.newBuilder()
+                .setVehicleInternalId(String.valueOf(entity.getVehicle().getInternalId()))
+                .setFuelInternalId(String.valueOf(entity.getInternalId()))
                 .setMileage(entity.getMileage())
                 .setLitres(entity.getFuelLitres())
                 .setCreatedTime(timestamp(entity.getCreatedDate()))
-                .setConsumptionByCar(entity.getFuelConsumptionByVehicle())
-                .setConsumptionCalculated("")
                 .build();
     }
 

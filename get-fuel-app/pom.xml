@@ -32,7 +32,7 @@
         <dependency>
             <groupId>ru.pleshkova</groupId>
             <artifactId>get-fuel-api</artifactId>
-            <version>1.0.0</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>net.devh</groupId>
@@ -45,7 +45,27 @@
             <version>${grpc.version}</version>
         </dependency>
 
+        <!-- Database dependency-->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>ru.pleshkova</groupId>
+            <artifactId>get-fuel-migration</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
+        <!-- Shedlock dependency-->
         <dependency>
             <groupId>net.javacrumbs.shedlock</groupId>
             <artifactId>shedlock-spring</artifactId>

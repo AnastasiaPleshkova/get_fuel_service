@@ -11,7 +11,7 @@ spring:
       maximum-pool-size: ${DATASOURCE_MAX_POOL_SIZE:10}
       max-lifetime: 1740000
   liquibase:
-    enabled: false
+    enabled: true
     drop-first: false
     change-log: classpath:db/master.xml
 
@@ -20,8 +20,7 @@ job:
     enabled: ${SOME_JOB_ENABLED:false}
     cron: ${SOME_JOB_CRON}
 
-
-    // TODO
-    // enable liquibase when app starts
-    // mapper for grpc methods
-    // create shedlock table migration
+rest:
+  url:
+  connectTimeout: 5000
+  readTimeout: 5000
