@@ -4,6 +4,8 @@ import get_fuel_service.api.request.FuelRequest;
 import get_fuel_service.api.response.FuelResponse;
 import io.micrometer.common.util.StringUtils;
 import org.springframework.stereotype.Component;
+import ru.pleshkova.business.model.dto.FuelCreateRequest;
+import ru.pleshkova.business.model.dto.FuelMessage;
 import ru.pleshkova.business.model.entity.FuelRecord;
 
 import java.time.LocalDateTime;
@@ -40,5 +42,10 @@ public class FuelRecordMapper {
                 .setCreatedTime(timestamp(entity.getCreatedDate()))
                 .build();
     }
+
+    public FuelMessage getKafkaMessage(FuelCreateRequest request) {
+        return new FuelMessage(request.fuelLitres(), request.mileage());
+    }
+
 
 }

@@ -24,3 +24,21 @@ rest:
   url:
   connectTimeout: 5000
   readTimeout: 5000
+
+logging:
+  level:
+    root: INFO
+
+security:
+  enable: ${AUTH_SECURITY_ENABLED:false}
+
+keycloak:
+  url: ${KEYCLOAK_URL}
+  realm: ${KEYCLOAK_REALM}
+  client-id: ${KEYCLOAK_CLIENT_ID}
+  client-secret: ${KEYCLOAK_CLIENT_SECRET}
+  users:
+    url: ${KEYCLOAK_USERS_URL}
+    realm: ${KEYCLOAK_USERS_REALM}
+    client-id: ${KEYCLOAK_USERS_CLIENT_ID}
+    client-secret: ${KEYCLOAK_USERS_CLIENT_SECRET}
