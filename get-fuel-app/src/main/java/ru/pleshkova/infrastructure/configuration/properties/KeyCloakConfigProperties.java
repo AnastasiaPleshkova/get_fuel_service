@@ -13,10 +13,17 @@ public class KeyCloakConfigProperties {
     private String clientId;
     private String clientSecret;
     private Parameters users;
+    private Timeout timeout;
 
     @Data
     public static class Parameters {
         private String clientId;
         private String clientSecret;
+    }
+
+    @Data
+    public static class Timeout {
+        private int read;
+        private int connect;
     }
 }

@@ -46,9 +46,25 @@ services:
     networks:
       - backend
 
+  keycloak:
+    image: quay.io/keycloak/keycloak:20.0.3
+    container_name: keycloak
+    ports:
+      - "8080:8080"
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    command: start-dev
+    volumes:
+      - keycloak_data:/file-storage
+    restart: unless-stopped
+    networks:
+      - backend
+
 
 volumes:
   postgresql: { }
+  keycloak_data: {}
 
 networks:
   backend: { }

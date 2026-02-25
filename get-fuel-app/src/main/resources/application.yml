@@ -1,5 +1,6 @@
 server:
   shutdown: graceful
+  port: ${SERVER_PORT}
 
 spring:
   datasource:
@@ -14,6 +15,30 @@ spring:
     enabled: true
     drop-first: false
     change-log: classpath:db/master.xml
+#    TODO почитать про эти настройки (одни для приложения, другие для пользователей приложения)
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_URL}/realms/${KEYCLOAK_REALM}
+#      client:
+#        provider:
+#          keycloak:
+#            issuer-uri: ${KEYCLOAK_URL}/realms/${KEYCLOAK_REALM}
+#        registration:
+#          keycloak:
+#            provider: keycloak
+#            authorization-grant-type: client_credentials
+#            client-id: ${KEYCLOAK_CLIENT_ID}
+#            client-secret: ${KEYCLOAK_CLIENT_SECRET}
+
+grpc:
+  authorization.enabled: ${GRPC_SECURITY_ENABLED}
+  server:
+    port: ${GRPC_SERVER_PORT}
+    reflection-service-enabled: true
+    security:
+      enabled: ${GRPC_SECURITY_ENABLED}
 
 job:
   some-job:
@@ -30,13 +55,16 @@ logging:
     root: INFO
 
 security:
-  enable: ${AUTH_SECURITY_ENABLED:false}
+  enable: ${AUTH_SECURITY_ENABLED:true}
 
 keycloak:
   url: ${KEYCLOAK_URL}
   realm: ${KEYCLOAK_REALM}
   client-id: ${KEYCLOAK_CLIENT_ID}
   client-secret: ${KEYCLOAK_CLIENT_SECRET}
+  timeout:
+    read: ${KEYCLOAK_CLIENT_READ_TIMEOUT:60000}
+    connect: ${KEYCLOAK_CLIENT_CONNECT_TIMEOUT:15000}
   users:
     url: ${KEYCLOAK_USERS_URL}
     realm: ${KEYCLOAK_USERS_REALM}

@@ -20,14 +20,11 @@ public class WebSecurityConfiguration {
     private final KeyCloakConfigProperties keyCloakConfigProperties;
 
     @Bean
-    @ConditionalOnProperty(prefix = "auth", name = "enable", havingValue = "false")
+    @ConditionalOnProperty(prefix = "security", name = "enable", havingValue = "false")
     SecurityFilterChain unprotectedFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf(csrf -> csrf.ignoringRequestMatchers("/v1/api"))
                 .authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
         return httpSecurity.build();
-
-//        return httpSecurity.authorizeHttpRequests(authHttRequests -> authHttRequests.anyRequest().permitAll())
-//                .build();
     }
 
     @Bean

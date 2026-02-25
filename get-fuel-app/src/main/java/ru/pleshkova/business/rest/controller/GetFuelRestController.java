@@ -19,7 +19,7 @@ public class GetFuelRestController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/v1/api/fuel")
+    @PostMapping("/v1/api/fuel")
     public ResponseEntity<RestResponse> createFuel(@RequestParam(required = false) String litres, @RequestParam(required = false) String mileage) {
         final var response = service.sendFuel(new FuelCreateRequest(litres, mileage));
         return ResponseEntity.ok(response);
